@@ -1,6 +1,6 @@
-  html{
-    font-size : 25px;
-  }
+html {
+  font-size: 25px;
+}
 
 .App {
   display: flex;
@@ -14,7 +14,6 @@
   padding-left: 30px;
 }
 
-
 .App-header {
   background-color: #222;
   padding: 10px;
@@ -23,65 +22,57 @@
   align-items: baseline;
 }
 
-.search-container{
+.search-container {
   background-color: rgba(141, 153, 163, 0.199);
   border-radius: 100px;
   max-height: 100px;
   max-width: 800px;
   display: flex;
   flex-direction: row;
-  margin-top:200px;
+  margin-top: 200px;
 }
 
-
-.search{
+.search {
   width: 600px;
   height: 0px;
   background-color: inherit;
   border: 0px;
   outline: none;
-  padding : 50px;
-  font-size: 2.0em;
+  padding: 50px;
+  font-size: 2em;
 }
 
-.submit{
+.submit {
   margin: 15px;
 }
 
-
-
-.table{
-  background-color:#F5F9FC;
+.table {
+  background-color: #f5f9fc;
   width: 1500px;
-  border-radius:20px;
+  border-radius: 20px;
   box-shadow: 0px 0px 30px 10px #8a8a8a52;
 }
 
-.row{
+.row {
   border-radius: 20px;
   color: rgba(49, 49, 49, 0.863);
-  font-size: 1.1em ;
+  font-size: 1.1em;
   display: flex;
   justify-content: center;
 }
 
-.row:hover{
-  background-color: #00D585;
+.row:hover {
+  background-color: #00d585;
   color: white;
 }
 
-.readme{
+.readme {
   height: inherit;
 }
 
-a:hover, a:visited, a:link, a:active
-{
-    text-decoration: none;
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
 }
-
-
-
-
-
-
-

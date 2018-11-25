@@ -1,48 +1,39 @@
-import React, { Component } from 'react';
-import {  Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { setRepo } from '../redux/actions';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setRepo } from "../redux/actions";
 
 const mapStateToProps = state => {
   return {
-   repo : state.gitReducer.repo 
-  }
-}
+    repo: state.gitReducer.repo
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    setRepo: (choice) => {
-      dispatch(setRepo(choice))
+    setRepo: choice => {
+      dispatch(setRepo(choice));
     }
-  }
-}
+  };
+};
 
 class Row extends Component {
+  constructor() {
+    super();
 
-  constructor(){
-    super()
-
-
-
-    this.handleClick = this.handleClick.bind(this)
-
+    this.handleClick = this.handleClick.bind(this);
   }
 
-
-  handleClick(){
+  handleClick() {
     this.props.setRepo(this.props.name);
   }
 
-
   render() {
     return (
-
       <div>
         <Link to="/readme" onClick={this.handleClick}>
           <div className="row">
-            
-                <p>{this.props.name}</p> 
-            
+            <p>{this.props.name}</p>
           </div>
         </Link>
       </div>
@@ -53,6 +44,6 @@ class Row extends Component {
 const connectedApp = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Row)
+)(Row);
 
 export default connectedApp;
