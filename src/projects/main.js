@@ -4,12 +4,9 @@ import { connect } from "react-redux";
 import { requestRepos } from "../redux/actions";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
   return {
     username: ownProps.match.params.id,
-    repos: state.requestRepos.repos,
-    isPending: state.requestRepos.isPending,
-    error: state.requestRepos.error
+    repos: state.requestRepos.repos
   };
 };
 
@@ -31,8 +28,8 @@ class Projects extends Component {
   }
 
   render() {
-    return this.props.isPending ? (
-      <Row name={"Loading"} />
+    return !this.props.repos ? (
+      <h1>Loading ...</h1>
     ) : (
       <div className="projects">
         <h3>Projects</h3>

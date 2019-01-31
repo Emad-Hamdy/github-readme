@@ -28,7 +28,8 @@ class Search extends Component {
     this.navigate = this.navigate.bind(this);
   }
 
-  navigate() {
+  navigate(evt) {
+    evt.preventDefault();
     this.props.history.push(`/projects/${this.props.username}`);
   }
   render() {
