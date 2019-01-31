@@ -31,7 +31,10 @@ class Row extends Component {
   render() {
     return (
       <div>
-        <Link to="/readme" onClick={this.handleClick}>
+        <Link
+          to={`/${this.props.username}/${this.props.name}/readme`}
+          onClick={this.handleClick}
+        >
           <div className="row">
             <p>{this.props.name}</p>
           </div>

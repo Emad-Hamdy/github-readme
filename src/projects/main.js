@@ -3,9 +3,10 @@ import Row from "./row";
 import { connect } from "react-redux";
 import { requestRepos } from "../redux/actions";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps);
   return {
-    username: state.gitReducer.username,
+    username: ownProps.match.params.id,
     repos: state.requestRepos.repos,
     isPending: state.requestRepos.isPending,
     error: state.requestRepos.error
@@ -14,8 +15,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    requestRepos: name => {
-      dispatch(requestRepos(name));
+    requestRepos: username => {
+      dispatch(requestRepos(username));
     }
   };
 };
@@ -38,7 +39,7 @@ class Projects extends Component {
 
         <div className="table">
           {this.props.repos.map(item => (
-            <Row name={item} key={item} />
+            <Row name={item} username={this.props.username} key={item} />
           ))}
         </div>
       </div>

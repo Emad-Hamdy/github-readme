@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from "./search/main";
 import Projects from "./projects/main";
 import ReadMe from "./readme/main";
-import BackButton from "./icons/backButton.svg";
 
 class App extends Component {
   render() {
@@ -13,31 +12,15 @@ class App extends Component {
         <Router>
           <div>
             <header className="App-header">
-              <Route
-                path="/projects"
-                render={() => (
-                  <Link to="/">
-                    {" "}
-                    <BackButton className="backButton" />{" "}
-                  </Link>
-                )}
-              />
-              <Route
-                path="/readme"
-                render={() => (
-                  <Link to="/projects">
-                    {" "}
-                    <BackButton className="backButton" />{" "}
-                  </Link>
-                )}
-              />
-              <h1 className="App-title">Github IQ</h1>
+              <Link to="/">
+                <h1 className="App-title">Github IQ</h1>
+              </Link>
             </header>
 
             <div className="App">
               <Route exact path="/" component={Search} />
-              <Route path="/projects" component={Projects} />
-              <Route path="/readme" component={ReadMe} />
+              <Route path="/projects/:id" component={Projects} />
+              <Route path="/:username/:repo/readme" component={ReadMe} />
             </div>
           </div>
         </Router>

@@ -36,7 +36,7 @@ class Search extends Component {
           />
         </label>
 
-        <Link to="/projects">
+        <Link to={`/projects/${this.props.username}`}>
           <div className="submit">
             <Button />
           </div>

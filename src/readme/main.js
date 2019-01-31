@@ -3,10 +3,11 @@ import { MarkdownPreview } from "react-marked-markdown";
 import { connect } from "react-redux";
 import { requestReadme } from "../redux/actions";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps);
   return {
-    repo: state.gitReducer.repo,
-    username: state.gitReducer.username,
+    repo: ownProps.match.params.repo,
+    username: ownProps.match.params.username,
     readme: state.requestReadme.readme
   };
 };

@@ -7,9 +7,6 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { createLogger } from "redux-logger";
 import { gitReducer, requestRepos, requestReadme } from "./redux/reducers";
 import thunkMiddleware from "redux-thunk";
-import { PersistGate } from "redux-persist/integration/react";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
 
 const logger = createLogger();
 const rootReducer = combineReducers({
@@ -18,23 +15,14 @@ const rootReducer = combineReducers({
   requestReadme
 });
 
-const persistConfig = {
-  key: "root",
-  storage
-};
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(
-  persistedReducer,
+  rootReducer,
   applyMiddleware(thunkMiddleware, logger)
 );
-let persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
+    <App />
   </Provider>,
   document.getElementById("root")
 );
