@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import Button from "../icons/CheckmarkButton.svg";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { setUsername } from "../redux/actions";
 
@@ -23,10 +23,18 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Search extends Component {
+  constructor() {
+    super();
+    this.navigate = this.navigate.bind(this);
+  }
+
+  navigate() {
+    this.props.history.push(`/projects/${this.props.username}`);
+  }
   render() {
     return (
       <div className="search-container">
-        <label>
+        <form onSubmit={this.navigate}>
           <input
             type="text"
             value={this.props.username}
@@ -34,7 +42,7 @@ class Search extends Component {
             className="search"
             placeholder="Enter Github Username"
           />
-        </label>
+        </form>
 
         <Link to={`/projects/${this.props.username}`}>
           <div className="submit">
