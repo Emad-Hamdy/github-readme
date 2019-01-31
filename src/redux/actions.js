@@ -30,14 +30,12 @@ export const requestReadme = (username, repo) => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const requestRepos = function requestRepos(username) {
-  return function getReposThunk(dispatch, getState) {
-    fetch(`https://api.github.com/users/${username}/repos`)
-      .then(response => response.json())
-      .then(data => {
-        data = data.map(item => item.name);
-        return dispatch({ type: REQUEST_REPOS_SUCCESS, payload: data });
-      })
-      .catch(err => console.log(err));
-  };
+export const requestRepos = username => dispatch => {
+  fetch(`https://api.github.com/users/${username}/repos`)
+    .then(response => response.json())
+    .then(data => {
+      data = data.map(item => item.name);
+      return dispatch({ type: REQUEST_REPOS_SUCCESS, payload: data });
+    })
+    .catch(err => console.log(err));
 };
